@@ -1,11 +1,24 @@
 package main
 
 import (
-	"fmt"
-	"runtime"
+	"log"
+	"net/http"
+	"time"
 )
 
+func timeHandler(w http.ResponseWriter, r *http.Request) {
+	tm := time.Now().Format(time.RFC1123)
+	w.Write([]byte("The time is: " + tm))
+}
+
 func main() {
-	runtime.GOMAXPROCS(runtime.NumCPU())
-	fmt.Println("hello world")
+	mux := http.NewServeMux()
+
+	// Convert the timeHandler function to a HandleFunc type
+	th := http.HandlerFunc(timeHandler)
+	// And add it to the ServeMux
+	mux.Handle("/", th)
+
+	log.Println("Listening...")
+	http.ListenAndServe(":3000", mux)
 }
