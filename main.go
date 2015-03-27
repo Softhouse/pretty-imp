@@ -28,7 +28,7 @@ func main() {
 
 	log.Println("Listening...")
 	http.HandleFunc("/", foo)
-	err := http.ListenAndServe(":3000", nil)
+	err := http.ListenAndServe(":30022", nil)
 	if err != nil {
 		log.Println("Failed to start server")
 	}
