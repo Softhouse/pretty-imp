@@ -30,11 +30,11 @@ func main() {
 
 	log.Println("Listening...")
 	http.HandleFunc("/", foo)
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":30022", nil)
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
-	profile := Profile{"Gang!", []string{"snowboarding", "programming"}}
+	profile := Profile{"Dude!", []string{"snowboarding", "programming"}}
 
 	fp := path.Join("templates", "index.html")
 	tmpl, err := template.ParseFiles(fp)
