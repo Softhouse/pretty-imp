@@ -2,9 +2,9 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 	"path"
-	"log"
 	"time"
 )
 
@@ -26,15 +26,16 @@ func main() {
 	// And add it to the ServeMux
 	//mux.Handle("/", th)
 
-
-
 	log.Println("Listening...")
 	http.HandleFunc("/", foo)
-	http.ListenAndServe(":30022", nil)
+	err := http.ListenAndServe(":3000", nil)
+	if err != nil {
+		log.Println("Failed to start server")
+	}
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
-	profile := Profile{"Dude!", []string{"snowboarding", "programming"}}
+	profile := Profile{"Gang!", []string{"snowboarding", "programming"}}
 
 	fp := path.Join("templates", "index.html")
 	tmpl, err := template.ParseFiles(fp)
