@@ -25,7 +25,7 @@ func timeHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	routing := mux.NewRouter()
-	routing.HandleFunc("/{uid:[a-zA-Z]+}", showUser)
+	routing.HandleFunc("/{uid:[a-zA-Z.@]+}", showUser)
 	routing.HandleFunc("/", showMe)
 	http.Handle("/", routing)
 	log.Println("Listening...")
@@ -36,7 +36,7 @@ func main() {
 	}
 }
 
-func foo(w http.ResponseWriter, r *http.Request) {
+func showMe(w http.ResponseWriter, r *http.Request) {
 	profile := Profile{"John Doe",
 		"john@example.com",
 		"We are awesome", []string{"snowboarding", "programming"}}
