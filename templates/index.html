@@ -1,2 +1,44 @@
-<h1>Hello {{ .Name }}</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Pretty Imp</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:200,400,700' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                font-family: 'Open Sans', sans-serif;
+                text-align: center;
+                background-color: #f4f4f5;
+            }
+            .profile-image {
+                margin-top: 25px;
+                border-radius: 75px;
+                height: 150px;
+                width: 150px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <img class="img-circle profile-image"
+                    src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" />
+            </div>
+            <div class="row">
+                <h1>{{ .Name }}</h1>
+                <h3>{{ .Email }}</h3>
+            </div>
+            <div class="row">
+                <p>{{ .Bio }}</p>
+            </div>
+            <div class="row">
+                <a href="/cv/{{ .Email }}" class="btn btn-primary">Exportera CV</a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -10,6 +10,8 @@ import (
 
 type Profile struct {
 	Name    string
+	Email   string
+	Bio     string
 	Hobbies []string
 }
 
@@ -35,7 +37,9 @@ func main() {
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
-	profile := Profile{"Gang!", []string{"snowboarding", "programming"}}
+	profile := Profile{"John Doe",
+	"john@example.com",
+	"We are awesome",[]string{"snowboarding", "programming"}}
 
 	fp := path.Join("templates", "index.html")
 	tmpl, err := template.ParseFiles(fp)
