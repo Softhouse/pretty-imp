@@ -56,7 +56,7 @@ func showMe(w http.ResponseWriter, r *http.Request) {
 }
 
 func showUser(w http.ResponseWriter, r *http.Request) {
-	personalInfoUrl := "http://xyz.softhouse.se/employees/"
+	personalInfoUrl := "http://xyz/employees/"
 	params := mux.Vars(r)
 	user := params["uid"]
 	result, err := http.Get(personalInfoUrl + user)
